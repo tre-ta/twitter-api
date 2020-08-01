@@ -1,0 +1,66 @@
+version: "3.7"
+
+services:
+  db:
+    image: mongo:4.2
+    env_file: .env
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${ROOT_DATABASE}
+    volumes:
+      - mongo:/data/db
+
+  api:
+    build: .
+    container_name: twitter_api
+    env_file: .env
+    ports:
+      - "8000:8000"
+
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.8.1"
+    environment:
+        - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+        - "discovery.type=single-node"
+    ports:
+        - "9200:9200"
+    volumes:
+        - elasticsearch_data:/usr/share/elasticsearch/data
+
+  kibana:
+    image: "docker.elastic.co/kibana/kibana:7.8.1"
+    ports:
+      - "5601:5601"
+
+  filebeat:
+    image: "docker.elastic.co/beats/filebeat:7.8.1"
+    user: root
+    volumes:
+      - ${PWD}/monitoring/logs/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./monitoring/metrics/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./monitoring/metrics/grafana/provisioning:/etc/grafana/provisioning
+      - ./monitoring/metrics/grafana/config.ini:/etc/grafana/config.ini
+      - ./monitoring/metrics/grafana/dashboards:/var/lib/grafana/dashboards
+
+volumes:
+  mongo:
+  elasticsearch_data:

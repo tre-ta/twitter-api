@@ -1,3 +1,8 @@
+## Overview
+This project aims to collect the latest posts from Twitter, and generate a few
+insights, such as the most followed users and amount of hashtags per hashtag and
+language. This project consumes the official Twitter API for this.
+
 ## Requirements 
 
 * Docker: 19.03.12-ce
@@ -8,12 +13,27 @@ version of those tools will suffice.
 
 ## Deployment
 
+Before the deployment begins, you'll need to set your Twitter API credentials.
+More specifically, the Token Bearer for authentication. This project provides a
+.env file on the root folder, all you have to do is replace it with your values:
+
+```
+BEARER_TOKEN=####  REDACTED - REPLACE THIS WITH YOUR TWITTER API BEARER  ####
+
+ROOT_USERNAME=mongo
+ROOT_PASSWORD=mongopw
+ROOT_DATABASE=tweets_db
+MONGO_IP=db
+```
+
+
 **Just one step: `./start.sh`**
 
 From a cold cache, without the needed images on the host machine, the whole
-process takes about ~7 minutes. If you already have the images you'll only need
-to wait for the API to build and the services to get ready, which takes about ~2
-minutes.
+process takes **~7 minutes**. If you already have the images you'll only need 
+to wait for the API to build and the services to get ready, which takes 
+**~2 minutes**. This is a time estimation, it might be longer due to slower 
+connections.
 
 
 This is going to run `docker-compose` on the background, creating the following
@@ -31,6 +51,15 @@ services:
 After that, the script is going to wait for the Kibana server and then
 issue a query to create an index pattern in Kibana. This makes the logs easily
 accessible in Elasticsearch, without having to do any configuration.
+
+You'll end up with the following:
+
+* **`localhost:8000`** - API
+* **`localhost:27017`** - MongoDB
+* **`localhost:9200`** - Elasticsearch
+* **`localhost:5601/app/kibana`** - Kibana
+* **`localhost:9090`** - Prometheus
+* **`localhost:3000`** - Grafana
 
 
 ## API
@@ -70,3 +99,25 @@ the amount of tweets.
 
 * `http://localhost:8000/total-hashtag-lang` - returns a list of the amount of
 documents, organized by hashtag and language.
+
+
+## Infrastructure
+
+![infrastructure](https://github.com/tre-ta/twitter-api/blob/master/images/infrastructure.jpg)
+
+
+## Logs (taken from Kibana) (localhost:5601/app/kibana)
+
+API logs (filtered by INFO and DEBUG):
+
+![kibana](https://github.com/tre-ta/twitter-api/blob/master/images/kibana.png)
+
+MongoDB logs:
+
+![mongo](https://github.com/tre-ta/twitter-api/blob/master/images/mongo.png)
+
+Filebeat is configured to get all the logs from the host machine's containers. 
+This means you have access to every aspect of the infrastructure. Even from the
+filebeat service itself. The `container.image.name` helps with precisely
+choosing which container you want. The logs are timefiltered as well, so you can
+set the range you want.

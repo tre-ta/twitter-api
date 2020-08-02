@@ -1,7 +1,7 @@
 ## Overview
-This project aims to collect the latest posts from Twitter, and generate a few
+This project aims to collect the latest posts from Twitter and generate a few
 insights, such as the most followed users and amount of hashtags per hashtag and
-language. This project consumes the official Twitter API for this.
+language. To achieve this goal, this project consumes the official Twitter API.
 
 ## Requirements 
 
@@ -49,10 +49,10 @@ services:
 * **`grafana`** (grafana:latest) - metrics visualization (dashboards)
 
 After that, the script is going to wait for the Kibana server and then
-issue a query to create an index pattern in Kibana. This makes the logs easily
-accessible in Elasticsearch, without having to do any configuration.
+issue a query to create an index pattern in Kibana. This makes the logs easy to 
+access in Elasticsearch, without having to do any configuration.
 
-You'll end up with the following:
+You'll end up with the following endpoints:
 
 * **`localhost:8000`** - API
 * **`localhost:27017`** - MongoDB
@@ -118,9 +118,9 @@ MongoDB logs:
 
 Filebeat is configured to get all the logs from the host machine's containers. 
 This means you have access to every aspect of the infrastructure. Even from the
-filebeat service itself. The `container.image.name` helps with precisely
-choosing which container you want. The logs are timefiltered as well, so you can
-set the range you want.
+filebeat service itself. The `container.image.name` helps precisely choosing 
+which container you want. The logs are timefiltered as well, so you can set 
+the range you want.
 
 # Dashboard (in Grafana) (localhost:3000)
 

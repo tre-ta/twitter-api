@@ -14,7 +14,7 @@ version of those tools will suffice.
 ## Deployment
 
 Before the deployment begins, you'll need to set your Twitter API credentials.
-More specifically, the Token Bearer for authentication. This project provides a
+More specifically, the Token Bearer for authentication. This project provides an
 .env file on the root folder, all you have to do is replace it with your values:
 
 ```
@@ -121,3 +121,28 @@ This means you have access to every aspect of the infrastructure. Even from the
 filebeat service itself. The `container.image.name` helps with precisely
 choosing which container you want. The logs are timefiltered as well, so you can
 set the range you want.
+
+# Dashboard (in Grafana) (localhost:3000)
+
+This is the Twitter API dashboard. There are four metrics being displayed:
+
+1. Total requests by endpoint and status code
+2. Latency in seconds
+3. Amount of errors returned by path
+4. Sum of all returned errors of all paths
+
+![grafana-interface](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-interface.png)
+
+## Total requests by endpoint and status code
+
+![grafana-1](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-1.png)
+
+## Latency in seconds
+![grafana-2](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-2.png)
+
+## Amount of errors returned by path
+![grafana-3](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-3.png)
+
+## Sum of all returned errors
+![grafana-4](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-4.png)
+

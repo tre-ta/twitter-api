@@ -108,6 +108,8 @@ documents, organized by hashtag and language.
 
 ## Logs (taken from Kibana) (localhost:5601/app/kibana)
 
+You can go the logs by selecting "Discover" in the Kibana menu on the left.
+
 API logs (filtered by INFO and DEBUG):
 
 ![kibana](https://github.com/tre-ta/twitter-api/blob/master/images/kibana.png)

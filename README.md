@@ -124,6 +124,8 @@ the range you want.
 
 # Dashboard (in Grafana) (localhost:3000)
 
+You can access grafana with admin/admin as credentials.
+
 This is the Twitter API dashboard. There are four metrics being displayed:
 
 1. Total requests by endpoint and status code

@@ -1,11 +1,10 @@
 from typing import List
 
 from fastapi import FastAPI, Query
+from src import DEFAULT_HASHTAGS
 from starlette_exporter import PrometheusMiddleware, handle_metrics
 
-from src import DEFAULT_HASHTAGS
 from tweets import Tweets
-
 
 api = FastAPI()
 api.add_middleware(PrometheusMiddleware, app_name="twitter-api")
@@ -14,8 +13,8 @@ tweets = Tweets()
 
 
 @api.get("/")
-async def get_tweets(htag: List[str] = Query(DEFAULT_HASHTAGS)):
-    return tweets.get_tweets(htag)
+async def insert_tweets(htag: List[str] = Query(DEFAULT_HASHTAGS)):
+    return tweets.insert_tweets(htag)
 
 
 @api.get("/most-followed-users")

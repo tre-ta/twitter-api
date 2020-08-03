@@ -100,6 +100,11 @@ the amount of tweets.
 * `http://localhost:8000/total-hashtag-lang` - returns a list of the amount of
 documents, organized by hashtag and language.
 
+## Queries
+
+As an alternative to the `/docs` endpoint, in the folder `queries/postman` 
+there is a postman collection and a link to it. This collection holds a few 
+useful queries for the API.
 
 ## Infrastructure
 

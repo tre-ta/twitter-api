@@ -34,8 +34,9 @@ class Tweets:
             req = requests.get(url, headers=headers)
             hashtag = hashtags[urls.index(url)]
             filtered_data = self.__filter_json(req.json(), hashtag)
-            saved_to_db = self.database.save(filtered_data)
-            inserted_count = inserted_count + saved_to_db
+            if len(filtered_data) > 0:
+                saved_to_db = self.database.save(filtered_data)
+                inserted_count = inserted_count + saved_to_db
 
         return f"Inserted {inserted_count} non-duplicated documents into the database."
 

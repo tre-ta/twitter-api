@@ -106,6 +106,11 @@ As an alternative to the `/docs` endpoint, in the folder `queries/postman`
 there is a postman collection and a link to it. This collection holds a few 
 useful queries for the API.
 
+Also, in the folder `queries/elastic_queries.txt` you'll find a 
+`curl -X GET "localhost:9200/_search?q=container.image.name:twt_api&pretty"`
+query that searches in Elasticsearch for every error and log regarding the
+Twitter API.
+
 ## Infrastructure
 
 ![infrastructure](https://github.com/tre-ta/twitter-api/blob/master/docs/infrastructure.jpg)

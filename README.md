@@ -170,7 +170,11 @@ You can execute the tests by installing pytest into your environment and then:
 ```
 source .env
 export BEARER_TOKEN=$BEARER_TOKEN
-pytest
+pytest --disable-pytest-warnings
 ```
 
 I recommend Python's virtual environment for this.
+
+The output will be similar to this:
+
+![pytest](https://github.com/tre-ta/twitter-api/blob/master/docs/pytest.png)

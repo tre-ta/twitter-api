@@ -1,5 +1,16 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/288b07ca2e93e3f88195/maintainability)](https://codeclimate.com/github/tre-ta/twitter-api/maintainability)
 
+## Table of Contents
+* [Overview](#overview)
+* [Requirements](#requirements)
+* [Deployment](#deployment)
+* [API](#api)
+* [Queries](#queries)
+* [Infrastructure](#infrastructure)
+* [Logs](#logs)
+* [Dashboard](#dashboard)
+* [Testing](#testing)
+
 ## Overview
 This project aims to collect the latest posts from Twitter and generate a few
 insights, such as the most followed users and amount of hashtags per hashtag and
@@ -119,7 +130,8 @@ Twitter API.
 ![infrastructure](https://github.com/tre-ta/twitter-api/blob/master/docs/infrastructure.jpg)
 
 
-## Logs (taken from Kibana) (localhost:5601/app/kibana)
+## Logs
+**Taken from Kibana (localhost:5601/app/kibana)**
 
 You can go the logs by selecting "Discover" in the Kibana menu on the left.
 
@@ -137,7 +149,8 @@ filebeat service itself. The `container.image.name` helps precisely choosing
 which container you want. The logs are timefiltered as well, so you can set 
 the range you want.
 
-# Dashboard (in Grafana) (localhost:3000)
+## Dashboard 
+**Grafana (localhost:3000)**
 
 You can access grafana with admin/admin as credentials. 
 
@@ -153,21 +166,21 @@ This is the Twitter API dashboard. There are four metrics being displayed:
 
 ![grafana-interface](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-interface.png)
 
-## Total requests by endpoint and status code
+### Total requests by endpoint and status code
 
 ![grafana-1](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-1.png)
 
-## Latency in seconds
+### Latency in seconds
 ![grafana-2](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-2.png)
 
-## Amount of errors returned by path
+### Amount of errors returned by path
 ![grafana-3](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-3.png)
 
-## Sum of all returned errors
+### Sum of all returned errors
 ![grafana-4](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-4.png)
 
 
-# Testing
+## Testing
 You can execute the tests by installing pytest into your environment and then:
 
 ```

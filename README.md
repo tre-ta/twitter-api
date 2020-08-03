@@ -15,7 +15,8 @@ version of those tools will suffice.
 
 ## Deployment
 
-Before the deployment begins, you'll need to set your Twitter API credentials.
+Before the deployment begins, you'll need to set your Twitter API and MongoDB
+credentials.
 More specifically, the Token Bearer for authentication. This project provides an
 .env file on the root folder, all you have to do is replace it with your values:
 
@@ -162,3 +163,14 @@ This is the Twitter API dashboard. There are four metrics being displayed:
 ## Sum of all returned errors
 ![grafana-4](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-4.png)
 
+
+# Testing
+You can execute the tests by installing pytest into your environment and then:
+
+```
+source .env
+export BEARER_TOKEN=$BEARER_TOKEN
+pytest
+```
+
+I recommend Python's virtual environment for this.

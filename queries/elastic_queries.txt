@@ -1,2 +1,2 @@
 # Query every hit from `twt_api`
-curl -X GET "localhost:9200/_search?q=container.image.name:twt_api&pretty"
+curl -X GET "localhost:9200/_search?q=container.name:twitter_api&pretty"

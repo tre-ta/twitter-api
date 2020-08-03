@@ -178,3 +178,5 @@ I recommend Python's virtual environment for this.
 The output will be similar to this:
 
 ![pytest](https://github.com/tre-ta/twitter-api/blob/master/docs/pytest.png)
+
+The `warnings` are due to pytest internal deprecation warnings.

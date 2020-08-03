@@ -103,7 +103,7 @@ documents, organized by hashtag and language.
 
 ## Infrastructure
 
-![infrastructure](https://github.com/tre-ta/twitter-api/blob/master/images/infrastructure.jpg)
+![infrastructure](https://github.com/tre-ta/twitter-api/blob/master/docs/infrastructure.jpg)
 
 
 ## Logs (taken from Kibana) (localhost:5601/app/kibana)
@@ -112,11 +112,11 @@ You can go the logs by selecting "Discover" in the Kibana menu on the left.
 
 API logs (filtered by INFO and DEBUG):
 
-![kibana](https://github.com/tre-ta/twitter-api/blob/master/images/kibana.png)
+![kibana](https://github.com/tre-ta/twitter-api/blob/master/docs/kibana.png)
 
 MongoDB logs:
 
-![mongo](https://github.com/tre-ta/twitter-api/blob/master/images/mongo.png)
+![mongo](https://github.com/tre-ta/twitter-api/blob/master/docs/mongo.png)
 
 Filebeat is configured to get all the logs from the host machine's containers. 
 This means you have access to every aspect of the infrastructure. Even from the
@@ -135,18 +135,18 @@ This is the Twitter API dashboard. There are four metrics being displayed:
 3. Amount of errors returned by path
 4. Sum of all returned errors of all paths
 
-![grafana-interface](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-interface.png)
+![grafana-interface](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-interface.png)
 
 ## Total requests by endpoint and status code
 
-![grafana-1](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-1.png)
+![grafana-1](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-1.png)
 
 ## Latency in seconds
-![grafana-2](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-2.png)
+![grafana-2](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-2.png)
 
 ## Amount of errors returned by path
-![grafana-3](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-3.png)
+![grafana-3](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-3.png)
 
 ## Sum of all returned errors
-![grafana-4](https://github.com/tre-ta/twitter-api/blob/master/images/grafana-4.png)
+![grafana-4](https://github.com/tre-ta/twitter-api/blob/master/docs/grafana-4.png)
 

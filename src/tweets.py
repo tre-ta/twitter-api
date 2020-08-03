@@ -40,14 +40,27 @@ class Tweets:
 
         return f"Inserted {inserted_count} non-duplicated documents into the database."
 
-    @staticmethod
-    def __get_urls(hashtags):
+    def __get_urls(self, hashtags):
         urls = []
+        hashtags = self.__get_resized_hashtags(hashtags)
         for item in hashtags:
             base_search_url = "https://api.twitter.com/1.1/search/tweets.json"
             filters = f"?q=%23{item}&result_type=recent&count=100&include_entities=true"
             urls.append(base_search_url + filters)
         return urls
+
+    def __get_resized_hashtags(self, hashtags):
+        # limit size due to the maximum recommended length of an URL is ~2000
+        while self.__get_hashtags_size(hashtags) > 1500:
+            hashtags = hashtags[:-1]
+        return hashtags
+
+    @staticmethod
+    def __get_hashtags_size(hashtags):
+        size = 0
+        for item in hashtags:
+            size = size + len(item)
+        return size
 
     @staticmethod
     def __get_bearer():

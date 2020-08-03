@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/288b07ca2e93e3f88195/maintainability)](https://codeclimate.com/github/tre-ta/twitter-api/maintainability)
+
 ## Overview
 This project aims to collect the latest posts from Twitter and generate a few
 insights, such as the most followed users and amount of hashtags per hashtag and

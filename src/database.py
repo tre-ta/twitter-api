@@ -30,7 +30,7 @@ class Database:
         self.mongo_username = os.environ.get("MONGO_USERNAME", "mongo")
         self.mongo_password = os.environ.get("MONGO_PASSWORD", "mongopw")
 
-    def save_to_db(self, data):
+    def save(self, data):
         try:
             result = self.tweets_collection.insert_many(data, ordered=False)
             inserted_count = len(result.inserted_ids)
@@ -43,5 +43,5 @@ class Database:
             self.logger.info(f"Non-duplicated documents count: {inserted_count}")
             return inserted_count
 
-    def get_tweets_from_db(self):
+    def get_tweets(self):
         return self.tweets_collection.find()

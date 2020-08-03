@@ -6,9 +6,9 @@ RUN mkdir -p /app/src
 WORKDIR /app/src
 
 COPY setup.py /app
-COPY /requirements.txt requirements.txt
+COPY src/requirements.txt /app/src/requirements.txt
 
-RUN pip install -r requirements.txt
+RUN pip install -r /app/src/requirements.txt
 
 COPY src/ .
 RUN pip install /app

@@ -12,8 +12,8 @@ from database import Database
 
 class Tweets:
     def __init__(self):
-        self.database = Database()
         self.logger = self.__get_logger()
+        self.database = Database(self.logger)
 
     def __get_logger(self):
         logger = logging.getLogger()
@@ -34,7 +34,7 @@ class Tweets:
             req = requests.get(url, headers=headers)
             hashtag = hashtags[urls.index(url)]
             filtered_data = self.__filter_json(req.json(), hashtag)
-            saved_to_db = self.database.save_to_db(filtered_data)
+            saved_to_db = self.database.save(filtered_data)
             inserted_count = inserted_count + saved_to_db
 
         return f"Inserted {inserted_count} non-duplicated documents into the database."
@@ -90,7 +90,7 @@ class Tweets:
         return id_
 
     def get_most_followed_users(self):
-        tweets = self.database.get_tweets_from_db()
+        tweets = self.database.get_tweets()
         user_followers_count = []
 
         for item in tweets:

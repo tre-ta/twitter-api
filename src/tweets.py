@@ -7,7 +7,7 @@ import requests
 from pymongo import MongoClient
 from pymongo.errors import BulkWriteError
 
-from database import Database
+from src.database import Database
 
 
 class Tweets:

@@ -4,7 +4,7 @@ from fastapi import FastAPI, Query
 from src import DEFAULT_HASHTAGS
 from starlette_exporter import PrometheusMiddleware, handle_metrics
 
-from tweets import Tweets
+from src.tweets import Tweets
 
 api = FastAPI()
 api.add_middleware(PrometheusMiddleware, app_name="twitter-api")
